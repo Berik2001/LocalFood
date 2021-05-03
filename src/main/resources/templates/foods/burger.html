@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head >
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,900&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,900&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"  href="../../static/css/style.css" />
+
+
+</head>
+<body style="background-image:  url('https://wallpaperaccess.com/full/670457.jpg');">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            <img src="https://i.pinimg.com/originals/2e/e7/0f/2ee70fdf94cc1e52b17fa738f1e4fd62.png" width="50px">
+        </a>
+        <h2 style="color: #6E9E06" th:if="${session.customer!=null}" th:text="${session.customer.email}"></h2>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item" th:if="${session.customer==null}">
+                    <a class="nav-link"  href="/login">Login</a>
+                </li>
+                <li class="nav-item" th:if="${session.customer==null}">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+                <li class="nav-item" th:if="${session.customer!=null}">
+                    <a class="nav-link" href="/destroy">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="site-menu"  id="site-menu">
+    <span>Berik's Burger House</span>
+    <nav >
+        <a href="#">Home</a>
+        <a href="#" >Items</a>
+        <a href="/register" >Register</a>
+    </nav>
+
+</div>
+
+
+<div class="left-menu" >
+    <div class="scroll-child">
+        <a >
+            <img src="https://i.pinimg.com/originals/bd/14/9c/bd149c5c05185de274f040d809f93354.png" style="width: 70px" />
+            <span>Basket</span>
+        </a>
+        <a href="/pizza"><img src="https://thebigmansworld.com/wp-content/uploads/2020/03/2-ingredient-pizza-dough-13.jpg" style="width: 80px" />Pizza</a>
+        <a href="/burger"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YnVyZ2VyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" style="width: 80px"  />Burger</a>
+        <a  href="/beverage"><img src="https://images.costcobusinessdelivery.com/ImageDelivery/imageService?profileId=12028466&itemId=854330&recipeName=680"  style="width: 80px" />Beverage</a>
+        <a  href="/kfc"><img src="https://i2-prod.chroniclelive.co.uk/incoming/article12573179.ece/ALTERNATES/s615/JS22600968.jpg" style="width: 80px" />KFC</a>
+    </div>
+</div>
+<div class="content page" >
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-md-4" th:each="burger:${burgers}">
+    <div class="card" style="width: 18rem;">
+    <img th:src="@{${burger.image}}" >
+    <div class="card-body">
+        <h5 class="card-title" th:text="${burger.name}"></h5>
+        <p class="card-text" th:text="${burger.description}"></p>
+    </div>
+        <div class="card-footer">
+          <h2 th:text=" '$'+ ${burger.price}"></h2>
+            <a href="#"   class="btn btn-success">Buy</a>
+
+
+        </div>
+</div></div>
+
+</div>
+</div>
+</div>
+<div ></div>
+</body>
+</html>
+</body>
+</html>
